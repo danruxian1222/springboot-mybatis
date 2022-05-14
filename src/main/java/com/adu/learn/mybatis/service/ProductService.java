@@ -15,4 +15,6 @@ public interface ProductService {
     List<Product> list();
 
     CommonPage<Product> page(Integer pageNo, Integer pageSize);
+
+    Product addEx2Rollback(Product product);
 }

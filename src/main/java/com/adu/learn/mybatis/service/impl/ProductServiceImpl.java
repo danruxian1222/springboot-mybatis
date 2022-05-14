@@ -8,6 +8,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -45,5 +46,13 @@ public class ProductServiceImpl implements ProductService {
         PageInfo<Product> pageInfo = new PageInfo<>(productList);
         CommonPage<Product> commonPage = new CommonPage(pageInfo);
         return commonPage;
+    }
+
+    @Transactional
+    @Override
+    public Product addEx2Rollback(Product product) {
+        int i = productMapper.add(product);
+        int j = i/0;
+        return product;
     }
 }

@@ -54,4 +54,11 @@ public class ProductController {
         CommonPage<Product> page = productService.page(pageNo, pageSize);
         return MybatisResult.ok(page);
     }
+
+    @ApiOperation("新增发生异常回滚事务")
+    @PostMapping("addEx2Rollback")
+    public MybatisResult<Product> addEx2Rollback(@RequestBody Product product){
+        product = productService.addEx2Rollback(product);
+        return MybatisResult.ok(product);
+    }
 }

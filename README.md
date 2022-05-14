@@ -7,3 +7,4 @@ springboot + mybatis + mysql + redis
 6.添加pagehelper分页功能
 7.添加redis功能
 8.添加分布式锁(redis实现)
+9.添加事务机制
