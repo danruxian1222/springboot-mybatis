@@ -12,4 +12,6 @@ public interface ProductMapper {
     int update(Product product);
 
     List<Product> list();
+
+    List<Product> page();
 }

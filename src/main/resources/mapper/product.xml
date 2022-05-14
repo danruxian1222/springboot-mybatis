@@ -20,4 +20,8 @@
     <select id="list" resultType="com.adu.learn.mybatis.entity.Product">
         select * from product
     </select>
+
+    <select id="page" resultType="com.adu.learn.mybatis.entity.Product">
+        select * from product order by id desc
+    </select>
 </mapper>

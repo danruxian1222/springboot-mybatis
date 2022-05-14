@@ -1,5 +1,6 @@
 package com.adu.learn.mybatis.service;
 
+import com.adu.learn.mybatis.common.CommonPage;
 import com.adu.learn.mybatis.entity.Product;
 
 import java.util.List;
@@ -12,4 +13,6 @@ public interface ProductService {
     int update(Product product);
 
     List<Product> list();
+
+    CommonPage<Product> page(Integer pageNo, Integer pageSize);
 }
