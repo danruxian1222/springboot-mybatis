@@ -20,6 +20,16 @@ spring:
       connection-test-query: SELECT 1
   mvc:
     throw-exception-if-no-handler-found: true
+  redis:
+    host: localhost
+    port: 6379
+    lettuce:
+      pool:
+        min-idle: 0
+        max-idle: 8
+        max-wait: 3000
+        max-active: 8
+    timeout: 30000
 
 
 #mybatis配置
@@ -42,3 +52,4 @@ pagehelper:
   reasonable: true
   support-methods-arguments: true
   params: count=countsql
+
