@@ -31,3 +31,7 @@ mybatis:
 logging:
   level:
     com.adu.learn.mybatis.mapper: debug
+
+#swagger
+swagger:
+  enable: true
