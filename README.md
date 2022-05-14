@@ -4,3 +4,4 @@ springboot + mybatis + mysql
 3.统一返回结果封装
 4.添加swagger2(可动态配置是否开启)
 5.添加定时任务--多线程处理
+6.添加pagehelper分页功能
