@@ -20,11 +20,11 @@ public class ScheduleTask {
     @Autowired
     private RedissonClient redissonClient;
 
-    @Scheduled(cron = "0/2 * * * * ?")
+    @Scheduled(cron = "0 0/1 * * * ?")
     @Async
     public void task1() {
         log.info("--------------task1 begin----------------");
-        lock("redis-lock", ()->{
+        tryLock("redis-lock", ()->{
             log.error("-------------task1 execute---------");
             try {
                 Thread.sleep(10000);
@@ -35,11 +35,11 @@ public class ScheduleTask {
         });
     }
 
-    @Scheduled(cron = "0/2 * * * * ?")
+    @Scheduled(cron = "0 0/1 * * * ?")
     @Async
     public void task2() {
         log.info("--------------task2 begin----------------");
-        lock("redis-lock", ()->{
+        tryLock("redis-lock", ()->{
             log.error("-------------task2 execute---------");
             try {
                 Thread.sleep(10000);
@@ -54,6 +54,20 @@ public class ScheduleTask {
 //        } catch (InterruptedException e) {
 //            e.printStackTrace();
 //        }
+
+    }
+
+    private void tryLock(String lockName, Supplier supplier){
+        RLock lock = redissonClient.getLock(lockName);
+        try {
+            if(lock.tryLock()){
+                supplier.get();
+                lock.unlock();
+            }
+
+        } catch (Exception e){
+        } finally {
+        }
 
     }
 

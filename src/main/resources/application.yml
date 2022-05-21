@@ -30,6 +30,7 @@ spring:
         max-wait: 3000
         max-active: 8
     timeout: 30000
+    password: 123456
 
 
 #mybatis配置
