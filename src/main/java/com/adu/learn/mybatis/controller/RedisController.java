@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.concurrent.TimeUnit;
 
 @RestController
-@RequestMapping("redis")
+@RequestMapping("v1/redis")
 public class RedisController {
 
     @Autowired

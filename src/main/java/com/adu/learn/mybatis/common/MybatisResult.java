@@ -19,6 +19,10 @@ public class MybatisResult<T> {
         return new MybatisResult<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), msg, null);
     }
 
+    public static <T> MybatisResult<T> failed(int code, String msg){
+        return new MybatisResult<>(code, msg, null);
+    }
+
     public static <T> MybatisResult<T> ok(T data){
         return new MybatisResult<>(HttpStatus.OK.value(), HttpStatus.OK.getReasonPhrase(), data);
     }

@@ -10,6 +10,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
+    @ExceptionHandler(value=BizException.class)
+    @ResponseBody
+    public MybatisResult exceptionHandler(BizException e){
+        log.error(e.getMessage(), e);
+        return MybatisResult.failed(e.getCode(),e.getMessage());
+    }
+
     @ExceptionHandler(value=Exception.class)
     @ResponseBody
     public MybatisResult exceptionHandler(Exception e){
