@@ -9,3 +9,4 @@ springboot + mybatis + mysql + redis
 7.添加redis功能
 8.添加分布式锁(redis实现)
 9.添加事务机制
+10.添加JWT令牌机制

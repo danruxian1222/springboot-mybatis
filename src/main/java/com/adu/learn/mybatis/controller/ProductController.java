@@ -4,14 +4,17 @@ import com.adu.learn.mybatis.common.CommonPage;
 import com.adu.learn.mybatis.common.MybatisResult;
 import com.adu.learn.mybatis.entity.Product;
 import com.adu.learn.mybatis.service.ProductService;
+import com.adu.learn.mybatis.util.ThreadLocalContext;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.models.auth.In;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequestMapping("v1/product")
 public class ProductController {
@@ -43,6 +46,9 @@ public class ProductController {
     @ApiOperation("全量查询")
     @GetMapping("list")
     public MybatisResult list(){
+        String userName = ThreadLocalContext.get();
+        log.error("userName:{}", userName);
+
         List<Product> products = productService.list();
         return MybatisResult.ok(products);
     }

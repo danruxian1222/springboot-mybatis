@@ -2,6 +2,7 @@ package com.adu.learn.mybatis.interceptor;
 
 import com.adu.learn.mybatis.exception.BizException;
 import com.adu.learn.mybatis.util.JwtHelper;
+import com.adu.learn.mybatis.util.ThreadLocalContext;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.StringUtils;
@@ -21,6 +22,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         if(StringUtils.isEmpty(userName)){
             throw new BizException(HttpStatus.UNAUTHORIZED.value(), HttpStatus.UNAUTHORIZED.getReasonPhrase());
         }
+        ThreadLocalContext.set(userName);
         return true;
     }
 
