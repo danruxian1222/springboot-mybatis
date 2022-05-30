@@ -17,12 +17,12 @@ public class LoginInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        String token = request.getHeader("token");
+        /*String token = request.getHeader("token");
         String userName = JwtHelper.parseToken(token);
         if(StringUtils.isEmpty(userName)){
             throw new BizException(HttpStatus.UNAUTHORIZED.value(), HttpStatus.UNAUTHORIZED.getReasonPhrase());
         }
-        ThreadLocalContext.set(userName);
+        ThreadLocalContext.set(userName);*/
         return true;
     }
 
